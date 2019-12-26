@@ -7,7 +7,6 @@
 #include "Math/UnrealMathUtility.h"
 #include "ScoreSystem.h"
 #include "Kismet/GameplayStatics.h"
-#include "..\Public\CubeToCollect.h"
 #include "TimeManager.h"
 
 // Sets default values
@@ -57,9 +56,12 @@ void ACubesToCollect::OnActorBeginOverlap(UPrimitiveComponent * OverlappedComp, 
 	if (!ensure(ScoreSystem))
 		return;
 
-	ScoreSystem->CubeCollected(this);
+	if (OtherActor->GetName() == "FirstPersonCharacter_C_0")
+	{
+		ScoreSystem->CubeCollected(this);
 
-	CubeMesh->DestroyComponent();
+		CubeMesh->DestroyComponent();
+	}
 }
 
 void ACubesToCollect::SetCubes()

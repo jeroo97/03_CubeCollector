@@ -3,16 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
+#include "GameFramework/Character.h"
 #include "PatrolNPC.generated.h"
 
 UCLASS()
-class CUBECOLLECTOR_API APatrolNPC : public APawn
+class CUBECOLLECTOR_API APatrolNPC : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
+	// Sets default values for this character's properties
 	APatrolNPC();
 
 protected:
@@ -28,6 +28,4 @@ public:
 
 private:
 
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	UStaticMeshComponent* StaticMesh = nullptr;
 };
