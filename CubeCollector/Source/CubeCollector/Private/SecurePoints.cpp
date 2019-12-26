@@ -50,16 +50,19 @@ void ASecurePoints::SetSecurePointMaterial(ESecurePointType PointType)
 	if (PointType == ESecurePointType::Blue)
 	{
 		ParticleSystem->SetTemplate(BlueParticleSystem);
+		MeshComponent->SetMaterial(0, BlueMaterial);
 	}
 
 	if (PointType == ESecurePointType::Yellow)
 	{
 		ParticleSystem->SetTemplate(YellowParticleSystem);
+		MeshComponent->SetMaterial(0, YellowMaterial);
 	}
 
 	if (PointType == ESecurePointType::Green)
 	{
 		ParticleSystem->SetTemplate(GreenParticleSystem);
+		MeshComponent->SetMaterial(0, GreenMaterial);
 	}
 }
 

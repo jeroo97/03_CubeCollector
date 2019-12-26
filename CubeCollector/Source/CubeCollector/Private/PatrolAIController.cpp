@@ -3,13 +3,14 @@
 
 #include "PatrolAIController.h"
 #include "..\Public\PatrolAIController.h"
+#include "Perception/AIPerceptionComponent.h"
+#include "Perception/AISenseConfig_Sight.h"
 
 APatrolAIController::APatrolAIController() 
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
-
+	
 }
 
 void APatrolAIController::BeginPlay()

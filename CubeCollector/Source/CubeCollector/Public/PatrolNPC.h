@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "PatrolNPC.generated.h"
 
+class UTimeManager;
+
 UCLASS()
 class CUBECOLLECTOR_API APatrolNPC : public ACharacter
 {
@@ -27,5 +29,11 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& hit);
 
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	UStaticMeshComponent* StaticMeshFace = nullptr;
+
+	UTimeManager* TimeManager = nullptr;
 };

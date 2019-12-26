@@ -48,6 +48,7 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Setup")
 	UStaticMeshComponent* MeshComponent = nullptr;
 
+	// <Particle systems>
 	UPROPERTY(EditAnywhere, Category = "Setup")
 	UParticleSystem* BlueParticleSystem = nullptr;
 
@@ -59,5 +60,16 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Setup")
 	UParticleSystemComponent* ParticleSystem = nullptr;
+	// </Particle systems>
 
+	// <Materials>
+	UPROPERTY(EditAnywhere, Category = "Setup")
+	UMaterialInterface* BlueMaterial;
+
+	UPROPERTY(EditAnywhere, Category = "Setup")
+	UMaterialInterface* YellowMaterial;
+
+	UPROPERTY(EditAnywhere, Category = "Setup")
+	UMaterialInterface* GreenMaterial;
+	// </Materials>
 };

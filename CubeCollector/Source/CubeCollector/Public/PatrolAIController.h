@@ -6,6 +6,9 @@
 #include "AIController.h"
 #include "PatrolAIController.generated.h"
 
+class UAIPerceptionComponent;
+class UAISenseConfig_Sight;
+
 /**
  * 
  */
@@ -22,5 +25,4 @@ private:
 	virtual void BeginPlay() override;
 
 	virtual void Tick(float DeltaTime) override;
-
 };

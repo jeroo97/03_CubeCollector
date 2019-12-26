@@ -17,17 +17,6 @@ UTimeManager::UTimeManager()
 	// ...
 }
 
-
-// Called when the game starts
-void UTimeManager::BeginPlay()
-{
-	Super::BeginPlay();
-
-	// ...
-	
-}
-
-
 // Called every frame
 void UTimeManager::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
@@ -36,7 +25,7 @@ void UTimeManager::TickComponent(float DeltaTime, ELevelTick TickType, FActorCom
 	TimeCountDown -= DeltaTime;
 	if (TimeCountDown <= 0)
 	{
-		UKismetSystemLibrary::QuitGame(this, GetWorld()->GetFirstPlayerController(), EQuitPreference::Quit, true);
+		//UKismetSystemLibrary::QuitGame(this, GetWorld()->GetFirstPlayerController(), EQuitPreference::Quit, true);
 		//UGameplayStatics::OpenLevel(this, FName(""));
 	}
 	// ...
