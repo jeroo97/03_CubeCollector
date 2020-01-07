@@ -28,12 +28,20 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	void SetCharacter(AActor* Player);
+
 private:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& hit);
+
+	float GetDistanceToPlayer();
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	UStaticMeshComponent* StaticMeshFace = nullptr;
 
 	UTimeManager* TimeManager = nullptr;
+
+	AActor* PlayerReference = nullptr;
+
 };

@@ -5,6 +5,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "TimeManager.h"
+#include "Math/Vector.h"
 
 // Sets default values
 APatrolNPC::APatrolNPC()
@@ -40,14 +41,24 @@ void APatrolNPC::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 
 }
 
+void APatrolNPC::SetCharacter(AActor* Player)
+{
+	PlayerReference = Player;
+}
+
 void APatrolNPC::OnHit(UPrimitiveComponent * HitComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, FVector NormalImpulse, const FHitResult & hit)
 {
-	if (OtherActor->GetName() == "FirstPersonCharacter_C_0")
+	if (OtherActor->GetName() == "FirstPersonCharacter_C_0" /*|| if a bullet hit*/)
 	{
 		TimeManager->ModifyTimeCountDown(-30.f);
 		this->DetachFromControllerPendingDestroy();
 		// TODO apagar la colicion y no modificar mas el counter una vez se muere.
-		//Destroy(this);
+		Destroy(this);
 	}
 }
 
+float APatrolNPC::GetDistanceToPlayer()
+{
+	auto Dist = FVector::Dist(this->GetActorLocation(), PlayerReference->GetActorLocation());
+	return Dist;
+}
