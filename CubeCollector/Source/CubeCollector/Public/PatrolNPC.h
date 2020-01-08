@@ -31,17 +31,30 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void SetCharacter(AActor* Player);
 
+	void TakeHealth();
+
+	UFUNCTION(BlueprintPure, Category = "UI")
+	float GetHealthPercent() const;
+
 private:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& hit);
 
 	float GetDistanceToPlayer();
 
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	UStaticMeshComponent* StaticMeshFace = nullptr;
+	void DestroyCharacter();
 
 	UTimeManager* TimeManager = nullptr;
 
 	AActor* PlayerReference = nullptr;
+
+	float DestroyDelay = 1.3f;
+
+	int32 LifeLeft = 0;
+
+	bool bActivateDeath = false;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Health")
+	int32 StartingLife = 3; // Asigned on begin play.
 
 };

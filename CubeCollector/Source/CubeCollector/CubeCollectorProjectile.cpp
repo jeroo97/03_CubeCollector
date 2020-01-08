@@ -40,4 +40,9 @@ void ACubeCollectorProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* Other
 
 		Destroy();
 	}
+
+	if (OtherActor->GetClass() == ClassToSearch)
+	{
+		Destroy();
+	}
 }
