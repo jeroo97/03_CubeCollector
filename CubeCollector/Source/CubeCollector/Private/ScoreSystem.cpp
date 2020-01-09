@@ -9,6 +9,7 @@
 #include "SecurePoints.h"
 #include "Components/SceneComponent.h"
 #include "Math/Box.h"
+#include "Kismet/GameplayStatics.h"
 #include "TimeManager.h"
 
 // Sets default values
@@ -45,7 +46,6 @@ void AScoreSystem::Tick(float DeltaTime)
 		SpawnTheCubes();
 		bOnce = false;
 	}
-
 }
 
 TArray <int32> AScoreSystem::GetSpecificCubeCount()
@@ -105,6 +105,10 @@ void AScoreSystem::CubeSecured(ASecurePoints * SecuredCube)
 		GreenCubesSecured += GreenCubes;
 		TimeManager->ModifyTimeCountDown(10.f * GreenCubes);
 		GreenCubes = 0;
+	}
+	if (BlueCubesSecured + YellowCubesSecured + GreenCubesSecured >= 30)
+	{
+		UGameplayStatics::OpenLevel(this, FName("WinScreen"));
 	}
 }
 
