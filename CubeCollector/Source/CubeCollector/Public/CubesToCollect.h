@@ -58,4 +58,7 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	int32 MaxSpecificCubes = 10;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Sound")
+	USoundBase* CollectSound = nullptr;
 };

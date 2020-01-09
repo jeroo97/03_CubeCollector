@@ -25,8 +25,7 @@ void UTimeManager::TickComponent(float DeltaTime, ELevelTick TickType, FActorCom
 	TimeCountDown -= DeltaTime;
 	if (TimeCountDown <= 0)
 	{
-		//UKismetSystemLibrary::QuitGame(this, GetWorld()->GetFirstPlayerController(), EQuitPreference::Quit, true);
-		//UGameplayStatics::OpenLevel(this, FName(""));
+		UGameplayStatics::OpenLevel(this, FName("DefeatScreen"));
 	}
 	// ...
 }

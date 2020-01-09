@@ -61,6 +61,11 @@ void ACubesToCollect::OnActorBeginOverlap(UPrimitiveComponent * OverlappedComp, 
 		ScoreSystem->CubeCollected(this);
 
 		CubeMesh->DestroyComponent();
+
+		if (!ensure(CollectSound))
+			return;
+
+		UGameplayStatics::PlaySoundAtLocation(this, CollectSound, this->GetActorLocation());
 	}
 }
 

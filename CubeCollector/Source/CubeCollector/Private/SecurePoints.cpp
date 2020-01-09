@@ -5,6 +5,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "..\Public\SecurePoints.h"
 #include "ScoreSystem.h"
+#include "Kismet/GameplayStatics.h"
 #include "Particles/ParticleSystemComponent.h"
 
 // Sets default values
@@ -43,6 +44,7 @@ void ASecurePoints::Tick(float DeltaTime)
 void ASecurePoints::OnActorBeginOverlap(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
 	ScoreSystem->CubeSecured(this);
+	UGameplayStatics::PlaySoundAtLocation(this, SecuredSound, this->GetActorLocation());
 }
 
 void ASecurePoints::SetSecurePointMaterial(ESecurePointType PointType)

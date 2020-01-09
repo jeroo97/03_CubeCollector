@@ -72,4 +72,7 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Setup")
 	UMaterialInterface* GreenMaterial;
 	// </Materials>
+
+	UPROPERTY(EditDefaultsOnly, Category = "Sound")
+	USoundBase* SecuredSound = nullptr;
 };
