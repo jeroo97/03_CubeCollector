@@ -31,7 +31,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void SetCharacter(AActor* Player);
 
-	void TakeHealth();
+	UFUNCTION(BlueprintCallable, Category = "Health")
+	void TakeHealth(int32 HealthToTake);
 
 	UFUNCTION(BlueprintPure, Category = "UI")
 	float GetHealthPercent() const;

@@ -48,9 +48,9 @@ void APatrolNPC::SetCharacter(AActor* Player)
 	PlayerReference = Player;
 }
 
-void APatrolNPC::TakeHealth()
+void APatrolNPC::TakeHealth(int32 HealthToTake)
 {
-	LifeLeft--;
+	LifeLeft -= HealthToTake;
 }
 
 float APatrolNPC::GetHealthPercent() const
@@ -68,7 +68,7 @@ void APatrolNPC::OnHit(UPrimitiveComponent * HitComponent, AActor * OtherActor, 
 	}
 	if (OtherActor->FindComponentByClass<UProjectileMovementComponent>())
 	{
-		TakeHealth();
+		TakeHealth(1);
 		if (LifeLeft <= 0)
 		{
 			UAISense_Hearing::ReportNoiseEvent(this, this->GetActorLocation(), 1.f, this, 0.f, TEXT("Noise"));

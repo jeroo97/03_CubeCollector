@@ -19,8 +19,6 @@ AScoreSystem::AScoreSystem()
 	PrimaryActorTick.bCanEverTick = true;
 
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(FName("StaticMeshComponent"));
-
-
 }
 
 // Called when the game starts or when spawned
