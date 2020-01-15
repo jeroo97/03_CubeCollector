@@ -2,6 +2,8 @@
 
 
 #include "MotherNPC.h"
+#include "Materials/MaterialInstanceDynamic.h"
+#include "Components/StaticMeshComponent.h"
 
 // Sets default values
 AMotherNPC::AMotherNPC()
@@ -23,7 +25,6 @@ void AMotherNPC::BeginPlay()
 void AMotherNPC::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input
