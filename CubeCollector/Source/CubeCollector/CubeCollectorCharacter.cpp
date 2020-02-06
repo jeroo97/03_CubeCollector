@@ -11,6 +11,9 @@
 #include "Kismet/GameplayStatics.h"
 #include "MotionControllerComponent.h"
 #include "XRMotionControllerBase.h" // for FXRMotionControllerBase::RightHandSourceId
+#include "MotherNPC.h"
+#include "DrawDebugHelpers.h"
+
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 
@@ -136,6 +139,11 @@ void ACubeCollectorCharacter::SetupPlayerInputComponent(class UInputComponent* P
 	PlayerInputComponent->BindAxis("TurnRate", this, &ACubeCollectorCharacter::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("LookUpRate", this, &ACubeCollectorCharacter::LookUpAtRate);
+}
+
+void ACubeCollectorCharacter::SetMotherNPC(AMotherNPC * MotherToSet)
+{
+	MotherNPC = MotherToSet;
 }
 
 void ACubeCollectorCharacter::OnFire()
@@ -297,4 +305,10 @@ bool ACubeCollectorCharacter::EnableTouchscreenMovement(class UInputComponent* P
 	}
 	
 	return false;
+}
+
+//Aqui nos quedamos-----------------------------------------------------------
+void ACubeCollectorCharacter::Tick(float DeltaTime)
+{
+	DrawDebugLine(GetWorld(), this->GetActorLocation(), FVector::DotProduct(this->GetActorForwardVector().GetSafeNormal(), MotherNPC->GetActorForwardVector().GetSafeNormal()), FColor::Red, true);
 }

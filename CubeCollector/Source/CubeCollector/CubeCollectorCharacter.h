@@ -7,6 +7,7 @@
 #include "CubeCollectorCharacter.generated.h"
 
 class UInputComponent;
+class AMotherNPC;
 
 UCLASS(config=Game)
 class ACubeCollectorCharacter : public ACharacter
@@ -80,6 +81,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	uint32 bUsingMotionControllers : 1;
 
+	AMotherNPC* MotherNPC = nullptr;
+
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	void SetMotherNPC(AMotherNPC* MotherToSet);
+
 protected:
 	
 	/** Fires a projectile. */
@@ -137,6 +143,9 @@ public:
 	FORCEINLINE class USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
 	/** Returns FirstPersonCameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
+
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 };
 
